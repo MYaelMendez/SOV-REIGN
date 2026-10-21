@@ -1,0 +1,56 @@
+{
+  "schema": "aeqr/0.1",
+  "id": "flamingo",
+  "symbol": "🍊🦩",
+  "invocation": "$æ🍊🦩",
+  "version": "0.1.0",
+  "status": "proposal",
+  "entrypoint": "chatline",
+  "public_manifest_url": null,
+  "authority": "host-verified",
+  "execution": "requires-separate-authorization",
+  "witness": "required-for-actions",
+  "capabilities": [
+    {
+      "id": "flamingo.property.daily-brief",
+      "state": "unbound",
+      "provider": null,
+      "required_scopes": [
+        "property.read",
+        "ledger.read",
+        "workorders.read"
+      ],
+      "actions": [
+        "preview"
+      ],
+      "approval": "human-required-for-writes"
+    }
+  ],
+  "host_adapters": [
+    {
+      "host": "chatgpt",
+      "status": "proposed"
+    },
+    {
+      "host": "teams",
+      "status": "proposed"
+    },
+    {
+      "host": "codex",
+      "status": "proposed"
+    },
+    {
+      "host": "dots",
+      "status": "exploratory"
+    },
+    {
+      "host": "hardware",
+      "status": "exploratory"
+    }
+  ],
+  "security": {
+    "qr_payload": "public-https-manifest-url-only",
+    "contains_credentials": false,
+    "transfers_authority": false
+  }
+}
