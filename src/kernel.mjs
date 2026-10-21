@@ -46,7 +46,7 @@ function identifier(x) { requireThat(typeof x === 'string' && /^[a-z][a-z0-9.-]{
 export function resolveEntry(value) {
   if (typeof value !== 'string' || value.length > 128 || !value.isWellFormed() || HIDDEN.test(value)) return null;
   const text = value.trim().normalize('NFC').toLowerCase().replace(/\ufe0f/gu, '');
-  if (['\u00e6', '$\u00e6', '$ae', '$mcp', '&mcp', '$mpc', '>_\u00e6\u00e6\u00e6://|||', ORIGIN.toLowerCase()].includes(text)) return 'intention';
+  if (['$chat', '>_\u00e6://chat_kernel', '\u00e6', '$\u00e6', '$ae', '$mcp', '&mcp', '$mpc', '>_\u00e6\u00e6\u00e6://|||', ORIGIN.toLowerCase()].includes(text)) return 'intention';
   if (['$\u2764', '$@\u2764', '@\u2764', '$heart'].includes(text)) return 'intention';
   if (text === PUBLIC.toLowerCase() || text === 'public') return 'public-review';
   return null;

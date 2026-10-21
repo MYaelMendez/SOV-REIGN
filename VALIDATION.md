@@ -26,3 +26,19 @@ No GitHub Actions run, Site/monosite update, deployment, live provider integrati
 Run `npm run check`, `npm run demo`, and optionally `npm run test:coverage`. Run `python tests/browser_smoke.py` only after installing the optional pinned test tool and using an authorized browser environment. See docs/HARDENING.md and docs/SECURITY.md for limits.
 
 These results cover this local reference, not the whole constellation. Public drafts and unsigned local receipts do not transfer human authority.
+
+
+## Chat Kernel / MoV v0.1 increment
+
+Inspected base: `a6f8e76b152128b979ac3a1af2279efe44dfccad`. The 25 locally materialized baseline files matched connector-retrieved Git blob hashes; unchanged `docs/CHAT-KERNEL.md` remains preserved in the remote base tree. The in-progress branch was resumed rather than duplicated.
+
+- Baseline rerun: 60 tests passed, zero failed.
+- Final `npm run check`: 92 tests passed, zero failed on Node.js v22.16.0. All previous tests remain.
+- 32 added tests: 21 registry/composition/alias tests (including a bounded 64-case authority-injection corpus), 10 Node DOM-harness UI tests, and one actual loopback HTTP integration test covering all new routes and existing restrictions.
+- Tests check URL shapes, synthetic/public-only data, malformed/private/authority fields, exact source retention, unique bounded selection, stable digests, detached snapshots, stale UI review, private reflection exclusion, lifecycle clearing, text rendering and aliases.
+- Test-client correction: fetch normalized traversal targets and ignored a spoofed Host header. Those assertions now send raw node:http request targets and headers. This was a test-harness correction, not a newly discovered server vulnerability.
+- `npm run demo`: original local export demonstration passed. Approval and receipt semantics were not expanded.
+- New browser script: Python syntax checked only. The existing browser gate was attempted with installed `/usr/bin/chromium`; navigation to loopback failed with `ERR_BLOCKED_BY_ADMINISTRATOR`. No bypass or passing browser test is claimed.
+- No CI dispatch, production deployment, existing Site/monosite change, installed Skill/plugin update, external provider action or account change.
+
+Run `npm run check`; for authorized real-browser validation run `python tests/mov_browser_smoke.py`. Node DOM tests are not visual, accessibility, device or browser-header verification. These results cover the local reference slice only.

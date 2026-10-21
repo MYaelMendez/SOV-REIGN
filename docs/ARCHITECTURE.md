@@ -19,13 +19,14 @@ The only operation is `manifest.export`. No shell, provider API, email, purchase
 
 `moltContext(parentId, publicRefs)` creates a new envelope containing bounded public record identifiers and parent lineage. It accepts no payload or grants. References do not establish trust in the content they identify.
 
-`verifyLocalReceiptIntegrity` compares a SHA-256 digest of the exact serialized public output. It does not verify a sender, digital signature, legal approval or provider result. JSON key ordering must be preserved; this is not a cross-language canonical signing format.
+`verifyLocalReceiptIntegrity` compares a SHA-256 digest of the exact serialized public output. It does not verify a sender, digital signature, legal approval or provider result. The v0.1.1 implementation uses bounded sorted-key JSON and full shape validation; this is not RFC 8785, a cross-language signing format, or proof of authorship.
 
 ## Layers without false readiness
 
 - Open Sovereign: policy contracts and educational reference implementation.
 - ^æ: founding agency configuration; no separate legal entity is claimed.
-- MoM / MoA / MoV: models, agents and viewports to compose later.
+- MoM / MoA: model and agent composition remain proposed.
+- MoV: synthetic read-only viewport inspection and composition are implemented; no remote viewport runtime.
 - MoW: proposed composition of independently governed widgets.
 - molt.earth: intended discovery destination; not deployed by this package.
 - GitHub: versioned source, reviews and optional manual validation.
@@ -34,3 +35,7 @@ The only operation is `manifest.export`. No shell, provider API, email, purchase
 ## Next bounded integration
 
 Connect one read-only consumer of the public manifest. Verify the same ID/version in each destination. Next, implement separately authenticated server-side policy for one real provider action, with minimum scopes, replay protection and provider evidence. No port of this local approval API should be exposed as public authentication.
+
+## Read-only MoV extension
+
+See [the v0.2 contract](AE-CHAT-KERNEL-CONTRACT-v0.2.md) for the implemented synthetic viewport registry, local inspection, deterministic selection and public review. No inference, orchestration or external action runtime is implied.

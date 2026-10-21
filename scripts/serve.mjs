@@ -3,6 +3,12 @@ import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 const root = new URL('../', import.meta.url);
 const files = new Map([
+  ['/mov/', ['mov/index.html', 'text/html; charset=utf-8']],
+  ['/mov/index.html', ['mov/index.html', 'text/html; charset=utf-8']],
+  ['/mov/app.mjs', ['mov/app.mjs', 'text/javascript; charset=utf-8']],
+  ['/mov/catalog.mjs', ['mov/catalog.mjs', 'text/javascript; charset=utf-8']],
+  ['/mov/style.css', ['mov/style.css', 'text/css; charset=utf-8']],
+  ['/src/viewports.mjs', ['src/viewports.mjs', 'text/javascript; charset=utf-8']],
   ['/', ['index.html', 'text/html; charset=utf-8']],
   ['/index.html', ['index.html', 'text/html; charset=utf-8']],
   ['/web/style.css', ['web/style.css', 'text/css; charset=utf-8']],
