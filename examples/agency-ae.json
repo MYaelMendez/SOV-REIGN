@@ -1,0 +1,7 @@
+{
+  "id": "ae",
+  "name": "^\u00e6 / Agency 001",
+  "purpose": "Return value to the human.",
+  "preferredExecutor": "ae",
+  "capabilities": ["manifest.export", "repo.prepare", "doola.handoff", "publishing.review"]
+}
