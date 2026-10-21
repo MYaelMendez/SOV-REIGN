@@ -7,6 +7,16 @@
 
 Open Sovereign now inhabits **MYaelMendez/SOV-REIGN**. This is a dependency-free, runnable **reference sovereignty kernel**, not a production identity service or an independently authorized agent.
 
+## æ · The Chat Kernel
+
+**Human-centered conversational computing:** `>_æ://CHAT_KERNEL`.
+
+The proposed Chat Kernel turns human intention into bounded, verifiable action through **Intent → Context → Composition → Review → Action → Witness → Reflection**. The repository preserves its reference implementation and engineering memory; neither a repository, website, nor individual agent is the whole kernel.
+
+Read [the Chat Kernel specification](docs/CHAT-KERNEL.md) for Neuromitosis, Fæscia, MoV/MoW, Open Sovereign, æQR³, Molt❤️earth and Hæ. It distinguishes implemented local behavior from the wider architecture still to build. Trusted software—not conversation alone—must enforce security boundaries.
+
+**Compound capability, not dependency.**
+
 ## Run locally
 
 Node.js 22 or newer. No npm installation or API key is required.
@@ -50,18 +60,23 @@ The original **MYaelMendez.github.io** monosite stays in its existing repository
 
 **Molt Context Protocol** is this project's context vocabulary, not an implementation or replacement of the external Model Context Protocol standard. Symbolic aliases and coordinates are local conventions, not registered platform commands or permissions.
 
-Read [the architecture](docs/ARCHITECTURE.md), [the threat model](docs/SECURITY.md), [publication gates](docs/PUBLISHING.md), and [verification evidence](VALIDATION.md).
+Read [the Chat Kernel specification](docs/CHAT-KERNEL.md), [the architecture](docs/ARCHITECTURE.md), [the threat model](docs/SECURITY.md), [publication gates](docs/PUBLISHING.md), and [verification evidence](VALIDATION.md).
 
 ## Source map
 
 | Path | Purpose |
 | --- | --- |
+| `docs/CHAT-KERNEL.md` | Human-centered conversational architecture and implementation boundaries |
 | `src/kernel.mjs` | Public projection, aliases, local approval gate, context and receipts |
 | `index.html`, `web/` | Reference UI; private intention remains in memory |
 | `examples/agency-ae.json` | Synthetic Agency 001 public configuration |
 | `scripts/` | Loopback-only static preview and terminal demo |
 | `tests/` | Kernel and HTTP-boundary tests |
 | `.github/workflows/validate.yml` | Manual, read-only validation; no deployment |
+
+## Hardening v0.1.1
+
+The review branch adds race-safe preparation limits, strict data-only input validation, full receipt-shape checks, exact local Host/Origin validation, and stale-review defenses. `npm run check` now runs 60 tests. Read [the hardening findings and limits](docs/HARDENING.md). Browser testing remains a separate, blocked release gate in this environment.
 
 ## Release status
 

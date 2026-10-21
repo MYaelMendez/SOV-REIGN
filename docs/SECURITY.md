@@ -32,3 +32,9 @@ Do not open public issues containing sensitive information. Report a redacted re
 - GitHub minimum workflow permissions: https://docs.github.com/en/actions/tutorials/authenticate-with-github_token
 
 These references support implementation primitives; they do not certify this package.
+
+## v0.1.1 hardening boundaries
+
+Read [HARDENING.md](HARDENING.md) for findings, digest-version migration and regression evidence. Input validation accepts bounded data-only records and dense arrays; it does not sandbox live Proxies or compromised JavaScript. Approval capacity is bounded per session generation and reserved before async hashing. Local preview requests must name an exact loopback Host and matching Origin; no cross-site resource fetch or URL-normalized traversal is accepted. The default CLI still binds only to 127.0.0.1.
+
+Receipt shape validation is not authenticity. A plausible metadata alteration cannot be detected by the unsigned content digest. A receipt is never a ticket. Detected clock faults revoke the session; create a new session to continue. Lifecycle clearing is best-effort, not a guarantee of secure erasure or browser-event delivery.

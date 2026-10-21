@@ -1,0 +1,36 @@
+{
+  "schema": "open-sovereign.verification.v1",
+  "version": "0.1.1",
+  "source_parent": "5888aa7d556498aa8c8eb812839e14056ff06c9e",
+  "scope": "local reference only",
+  "runtime": {
+    "node": "22.16.0",
+    "npm": "10.9.2"
+  },
+  "baseline": {
+    "passed": 25,
+    "failed": 0
+  },
+  "red_regressions": {
+    "passed": 0,
+    "failed": 21,
+    "note": "Overlapping regressions and stricter contracts, not a vulnerability count"
+  },
+  "current": {
+    "passed": 60,
+    "failed": 0,
+    "http": "loopback executed",
+    "ui": "Node DOM harness; not a browser",
+    "demo": "passed"
+  },
+  "browser": {
+    "status": "blocked",
+    "error": "ERR_BLOCKED_BY_ADMINISTRATOR",
+    "policy_bypassed": false,
+    "release_gate": "tests/browser_smoke.py"
+  },
+  "github_actions": "not_run",
+  "deployed": false,
+  "external_actions": false,
+  "provider_attestation": false
+}

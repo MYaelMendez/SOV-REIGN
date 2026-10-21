@@ -1,4 +1,4 @@
-import { createSession, resolveEntry, verifyLocalReceiptIntegrity } from '../src/kernel.mjs';
+import { createSession, resolveEntry, publicManifest, digest, verifyLocalReceiptIntegrity } from '../src/kernel.mjs';
 const el = id => document.getElementById(id);
 const session = createSession();
 const supported = Boolean(globalThis.crypto?.subtle);
@@ -24,19 +24,23 @@ el('prepare').addEventListener('click', async () => {
     el('consent').disabled = false;
     el('status').textContent = 'Prepared locally. Private intention is excluded. Review the full record before downloading.';
   } catch (error) { if (current === epoch) el('status').textContent = error.message; }
-  finally { if (current === epoch) { busy = false; el('prepare').disabled = false; } }
+  finally { if (current === epoch) { busy = false; el('prepare').disabled = !supported; } }
 });
 el('consent').addEventListener('change', () => { el('download').disabled = !draft || !el('consent').checked || busy; });
 el('download').addEventListener('click', async () => {
   if (!draft || !el('consent').checked || busy) return;
   busy = true; el('download').disabled = true; el('consent').disabled = true;
-  const current = epoch;
+  const current = epoch, snapshot = profile();
   try {
+    if (await digest(publicManifest(snapshot)) !== draft.digest) throw Error('Public fields changed; review again.');
+    if (current !== epoch) return;
+    if (JSON.stringify(profile()) !== JSON.stringify(snapshot)) throw Error('Public fields changed; review again.');
     const ticket = session.approve(draft.id, draft.digest, true);
     const result = await session.execute(ticket);
     const matches = await verifyLocalReceiptIntegrity(result.manifest, result.receipt);
     if (current !== epoch) return;
     if (!matches) throw Error('Local digest mismatch; no download.');
+    if (JSON.stringify(profile()) !== JSON.stringify(snapshot)) throw Error('Public fields changed; no download.');
     const url = URL.createObjectURL(new Blob([JSON.stringify(result, null, 2) + '\n'], { type: 'application/json' }));
     const link = document.createElement('a'); link.href = url; link.download = 'open-sovereign-public-draft.json';
     document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -57,3 +61,7 @@ el('enter').addEventListener('click', enter);
 el('entry').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); enter(); } });
 if (supported) invalidate('Local session ready. No accounts, plugins, or external executors are connected.');
 else { el('prepare').disabled = true; el('status').textContent = 'Use HTTPS or localhost for Web Crypto. Preparation stays disabled.'; }
+
+// Clear ephemeral intention and approvals when leaving, including back-forward cache.
+window.addEventListener('pagehide', () => { el('intention').value = ''; invalidate('Session cleared on leaving this page.'); });
+window.addEventListener('pageshow', event => { if (event.persisted) { el('intention').value = ''; invalidate('Restored without private intention or approvals. Prepare a new draft.'); } });

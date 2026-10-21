@@ -6,7 +6,7 @@ test('preview serves only allowlisted files and accepts no writes', async t => {
   t.after(() => { s.closeAllConnections(); s.close(); });
   const base = `http://127.0.0.1:${s.address().port}`;
   const page = await fetch(base); assert.equal(page.status, 200);
-  assert.ok(page.headers.get('content-security-policy').includes("connect-src 'self'"));
+  assert.ok(page.headers.get('content-security-policy').includes("connect-src 'none'"));
   assert.equal(page.headers.get('referrer-policy'), 'no-referrer');
   assert.match(await page.text(), /Open Sovereign/);
   assert.equal((await fetch(base + '/.env')).status, 404);

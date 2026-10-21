@@ -1,19 +1,28 @@
-# Verification record / 2026-10-20
+# Verification record / v0.1.1 hardening
 
-## Executed
+Source parent: `5888aa7d556498aa8c8eb812839e14056ff06c9e`.
+The uploaded v0.1 source archive was compared by Git blob hashes with all 19 files in that GitHub tree before editing; every file matched.
 
-- Runtime: Node.js v22.16.0, npm 10.9.2, Linux.
-- `npm run check`: syntax checks plus **25 tests passed, 0 failed**.
-- Tests cover aliases, public projection, private-field rejection, Codex as preference only, parent-linked context, exact digest review, explicit consent, forged and cross-session ticket rejection, replay/concurrency, expiry, revocation, clock regression, local receipt integrity and read-only HTTP serving.
-- `npm run demo`: completed the local prepare / approve / return-draft sequence. Output integrity matched. No remote service was contacted.
-- Static HTML/CSS rendered in Chromium at 1440x1000, 390x844, 320x568 and 844x390. No horizontal overflow. Phone layout visually inspected. These are static layout checks, not full interactive end-to-end tests.
+## Executed locally
+
+- Node.js v22.16.0 / npm 10.9.2 / Linux.
+- Baseline `npm run check`: **25 passed, 0 failed**.
+- First regression set against the baseline: **21 failed** (overlapping findings and stricter contracts, not a vulnerability count).
+- Final `npm run check`: **60 passed, 0 failed**. No core npm dependencies.
+- `npm run demo`: local prepare / approve / return-draft sequence completed and content integrity matched.
+- `npm run test:coverage`: **60 passed**. Kernel instrumentation reported 100% lines, 99.07% branches; coverage is not a security audit. UI module query imports make aggregate UI coverage unsuitable as a browser metric.
+- HTTP tests made real requests to a loopback server: allowlist, headers, methods, raw paths, hostile Host/Origin, timeouts and bodyless HEAD.
+- Eight DOM-harness tests execute web/app.mjs with synthetic controls: privacy exclusion, invalidation, silent edits, concurrent download clicks, cancellation, lifecycle clearing, aliases and text rendering.
+- Python syntax check of the optional browser release-gate script passed.
 
 ## Not completed
 
-- Browser navigation to the local preview returned `ERR_BLOCKED_BY_ADMINISTRATOR`. Full interactive browser testing, including the download control, must be completed in an authorized browser environment. The policy was not changed or bypassed.
-- No actual iOS Safari or Android device test, screen-reader audit, cross-host integration, real identity authentication, provider authorization or signed attestation.
-- No GitHub Actions run, deployment, external email, legal filing, payment or new OpenAI Site/plugin.
+Playwright / Chromium navigation to the local server failed with `ERR_BLOCKED_BY_ADMINISTRATOR`. No policy was changed or bypassed. This is an environmental block, not a passing UI test. Real-browser export/layout, iPhone/Android, accessibility, BFCache behavior and browser-header enforcement remain unverified.
 
-## Reproduce
+No GitHub Actions run, Site/monosite update, deployment, live provider integration, authenticated identity, legal filing, payment, external email or signed attestation occurred. The existing GitHub workflow stays manual and read-only.
 
-Run `npm run check`, then `npm run demo`. For interactive verification run `npm start` and follow the steps in docs/PUBLISHING.md. Confirm that changing any field resets approval and the private intention never appears in the downloaded record. Checks describe this reference only, not the entire constellation.
+## Reproduction and scope
+
+Run `npm run check`, `npm run demo`, and optionally `npm run test:coverage`. Run `python tests/browser_smoke.py` only after installing the optional pinned test tool and using an authorized browser environment. See docs/HARDENING.md and docs/SECURITY.md for limits.
+
+These results cover this local reference, not the whole constellation. Public drafts and unsigned local receipts do not transfer human authority.
