@@ -63,6 +63,10 @@ Read [the architecture](docs/ARCHITECTURE.md), [the threat model](docs/SECURITY.
 | `tests/` | Kernel and HTTP-boundary tests |
 | `.github/workflows/validate.yml` | Manual, read-only validation; no deployment |
 
+## Hardening v0.1.1
+
+The review branch adds race-safe preparation limits, strict data-only input validation, full receipt-shape checks, exact local Host/Origin validation, and stale-review defenses. `npm run check` now runs 60 tests. Read [the hardening findings and limits](docs/HARDENING.md). Browser testing remains a separate, blocked release gate in this environment.
+
 ## Release status
 
 The implementation is prepared for review. No production deployment, provider pairing, plugin update, domain change or release to the existing monosite is included. A local receipt demonstrates local output integrity, not external success.
