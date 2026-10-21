@@ -19,7 +19,7 @@ A production executor must independently authenticate the human, verify current 
 - The page performs no telemetry, external fetches, postMessage handoff, session transfer or secret storage.
 - Receipt payloads contain a random proposal ID and a digest of public output, not private intention.
 - External destination links are explicit choices with `rel=noreferrer`; opening them is separate from data synchronization or account linking.
-- The local server exposes only five allowlisted assets, accepts GET/HEAD only, binds to loopback, and sets a restrictive CSP, no-referrer and no-store headers. It is not a production host.
+- The local server exposes only explicitly allowlisted static assets, accepts GET/HEAD only, binds to loopback, and sets a restrictive CSP, no-referrer and no-store headers. It is not a production host.
 - Never commit founder documents, medical history, payment details, keys, private messages or grants to this public repository.
 
 ## Reporting
@@ -38,3 +38,10 @@ These references support implementation primitives; they do not certify this pac
 Read [HARDENING.md](HARDENING.md) for findings, digest-version migration and regression evidence. Input validation accepts bounded data-only records and dense arrays; it does not sandbox live Proxies or compromised JavaScript. Approval capacity is bounded per session generation and reserved before async hashing. Local preview requests must name an exact loopback Host and matching Origin; no cross-site resource fetch or URL-normalized traversal is accepted. The default CLI still binds only to 127.0.0.1.
 
 Receipt shape validation is not authenticity. A plausible metadata alteration cannot be detected by the unsigned content digest. A receipt is never a ticket. Detected clock faults revoke the session; create a new session to continue. Lifecycle clearing is best-effort, not a guarantee of secure erasure or browser-event delivery.
+
+
+## MoV v0.1 boundary
+
+The optional `/mov/` route adds only local static modules and styles to the allowlist, keeping `connect-src 'none'`, Host/Origin checks, camera/location denial, and read-only HTTP methods. The trusted bundled example module exports JSON; do not import untrusted code in place of that module. Public registry input is bounded JSON text, with exact fields and read-only synthetic capabilities. Displayed source URLs are not fetched or navigated. Selection and public titles are reviewed as public data; free text can contain sensitive information if entered there.
+
+There is no new execution or approval endpoint, storage, export adapter or provider connection. Content digests are unsigned local checks, never portable grants. Private reflection is not read into public composition. Browser lifecycle clearing is best-effort. Node DOM tests do not establish browser isolation or device compatibility.

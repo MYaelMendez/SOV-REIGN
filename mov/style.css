@@ -1,0 +1,13 @@
+/* Additive MoV surface; the authority kernel's controls and visual identity remain intact. */
+main{max-width:1040px}.mov-hero{padding:44px 0 28px}.mov-hero h1{font-size:clamp(38px,7vw,76px);line-height:1.04;letter-spacing:-.045em;margin:10px 0 20px}.mov-hero h1 span{color:var(--mint)}
+.mov-brand{font-size:21px;font-weight:700}.mov-brand span{font-size:14px;font-weight:400;margin-left:10px;color:var(--muted)}
+.viewport-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.viewport-card{min-width:0;display:flex;flex-direction:column;gap:10px;border:1px solid var(--edge);background:var(--bg);padding:16px;border-radius:14px}
+.viewport-choice{display:flex;gap:12px;align-items:center;margin:0;font-size:18px;cursor:pointer}.viewport-choice input{width:22px;height:22px;flex:0 0 22px;margin:0;accent-color:var(--mint)}
+.viewport-card p{margin:0;font-size:14px;line-height:1.5;flex:1}.viewport-card small{font-size:10px;letter-spacing:.05em;color:var(--muted)}.viewport-card button{align-self:flex-start;min-height:44px}
+.viewport-card:has(input:checked){border-color:var(--mint);box-shadow:inset 0 0 0 1px var(--mint)}
+.mov-train{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}.train-chip{padding:10px 12px;border:1px solid var(--edge);border-radius:9px;font-size:13px}
+#mov-source,#mov-digest{overflow-wrap:anywhere}#mov-review{min-height:140px;max-height:420px;overflow:auto}#mov-details{max-height:280px;overflow:auto}
+summary{cursor:pointer;min-height:44px;padding:12px 0}#mov-clear{margin-top:16px}#mov-prepare{margin-top:16px}
+@media(max-width:540px){.viewport-grid{grid-template-columns:1fr}.mov-hero{padding-top:28px}.mov-brand span{display:block;margin:4px 0}main{padding-inline:14px}.card{padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto;transition:none!important;animation:none!important}}

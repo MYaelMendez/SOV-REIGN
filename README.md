@@ -17,6 +17,14 @@ Read [the Chat Kernel specification](docs/CHAT-KERNEL.md) for Neuromitosis, Fæs
 
 **Compound capability, not dependency.**
 
+## MoV v0.1 / read-only Chat Kernel improvement
+
+The next slice is now implemented locally: **Garden, Sanctuary, Mobility and Learning** viewports, source inspection, human selection and deterministic public-composition review. Open `/mov/` after `npm start`. All examples are synthetic, no source URL is fetched, no provider is connected, and the existing local authorization/export gate is preserved.
+
+`$chat` and `>_æ://CHAT_KERNEL` now join the existing local intention aliases. These are application aliases, not an installed Skill or platform registration update.
+
+Read [the v0.2 contract and MoV implementation](docs/AE-CHAT-KERNEL-CONTRACT-v0.2.md). The suite now contains **92 passing local tests**; full browser/device validation remains a separate gate. The last 60-test record below is retained as historical hardening evidence, not the current suite count.
+
 ## Run locally
 
 Node.js 22 or newer. No npm installation or API key is required.
@@ -76,7 +84,7 @@ Read [the Chat Kernel specification](docs/CHAT-KERNEL.md), [the architecture](do
 
 ## Hardening v0.1.1
 
-The review branch adds race-safe preparation limits, strict data-only input validation, full receipt-shape checks, exact local Host/Origin validation, and stale-review defenses. `npm run check` now runs 60 tests. Read [the hardening findings and limits](docs/HARDENING.md). Browser testing remains a separate, blocked release gate in this environment.
+The review branch adds race-safe preparation limits, strict data-only input validation, full receipt-shape checks, exact local Host/Origin validation, and stale-review defenses. The v0.1.1 hardening checkpoint ran 60 tests. Read [the hardening findings and limits](docs/HARDENING.md). Browser testing remains a separate, blocked release gate in this environment.
 
 ## Release status
 
