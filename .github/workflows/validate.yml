@@ -1,5 +1,6 @@
 name: Open Sovereign manual validation
 on:
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
