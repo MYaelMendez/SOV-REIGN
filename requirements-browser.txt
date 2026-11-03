@@ -1,0 +1,2 @@
+# Optional release-gate tool only; no runtime npm dependencies.
+playwright==1.57.0
